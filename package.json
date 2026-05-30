@@ -1,0 +1,39 @@
+{
+  "name": "shipable-dashboard-node-workos-postgres",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "tsx api/server.ts",
+    "start": "node .shipable/service/api/server.js",
+    "prestart": "npm run build:api",
+    "build": "tsc -b && npm run build:api && vite build",
+    "build:api": "tsc -p tsconfig.api.json",
+    "typecheck": "tsc -b",
+    "lint": "tsc -b --pretty false",
+    "check:api": "tsc --noEmit -p tsconfig.api.json"
+  },
+  "dependencies": {
+    "@workos-inc/node": "8.13.0",
+    "cookie-parser": "1.4.7",
+    "express": "5.2.1",
+    "pg": "8.16.3",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.2.4",
+    "@types/cookie-parser": "1.4.10",
+    "@types/express": "5.0.6",
+    "@types/node": "25.6.0",
+    "@types/pg": "8.16.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.1",
+    "tailwindcss": "4.2.4",
+    "tsx": "4.21.0",
+    "typescript": "6.0.3",
+    "vite": "8.0.10"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "name": "dashboard-node-workos-postgres",
+  "components": [
+    {
+      "id": "web",
+      "type": "frontend",
+      "source": {
+        "path": "."
+      },
+      "build": {
+        "packageManager": "npm",
+        "install": "npm install --include=dev --no-audit --no-fund",
+        "check": "npm run typecheck",
+        "command": "npm run build",
+        "output": "dist"
+      }
+    },
+    {
+      "id": "api",
+      "type": "service",
+      "runtime": "node",
+      "source": {
+        "path": "."
+      },
+      "build": {
+        "install": "npm install --include=dev --no-audit --no-fund",
+        "command": "npm run build"
+      },
+      "run": {
+        "command": "npm run start",
+        "port": 8787,
+        "healthCheck": "/api/health"
+      },
+      "scale": {
+        "replicas": 1,
+        "cpu": "500m",
+        "memory": "512Mi",
+        "ephemeralStorage": "2Gi"
+      },
+      "env": [
+        {
+          "name": "DATABASE_URL",
+          "from": "component",
+          "component": "db",
+          "property": "connectionString"
+        }
+      ],
+      "dependsOn": [
+        "db"
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "engine": "postgres",
+      "provider": "managed",
+      "migrations": "db/migrations"
+    }
+  ],
+  "routes": [
+    {
+      "component": "web",
+      "environment": "preview"
+    },
+    {
+      "component": "api",
+      "environment": "preview"
+    }
+  ]
+}

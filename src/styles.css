@@ -1,0 +1,363 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --bg: #f5f6f4;
+  --panel: #ffffff;
+  --panel-muted: #eef1ed;
+  --text: #1b211d;
+  --muted: #667068;
+  --subtle: #8a938c;
+  --line: #d9ded8;
+  --line-strong: #bfc8c0;
+  --accent: #315f4d;
+  --accent-soft: #dfeae4;
+  --amber: #8a6200;
+  --amber-soft: #f4ead2;
+  --red: #a14135;
+  --red-soft: #f3dedb;
+  --shadow: 0 12px 34px rgba(27, 33, 29, 0.08);
+
+  color: var(--text);
+  background: var(--bg);
+  font-family:
+    Aptos,
+    "Segoe UI",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+body {
+  background:
+    linear-gradient(rgba(27, 33, 29, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 33, 29, 0.035) 1px, transparent 1px),
+    var(--bg);
+  background-size: 32px 32px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app {
+  min-height: 100dvh;
+  padding: 18px;
+}
+
+.layout {
+  min-height: calc(100dvh - 36px);
+  display: grid;
+  grid-template-columns: 252px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.side-panel,
+.workspace,
+.metric,
+.surface,
+.account-row,
+.incident,
+.empty,
+.notice,
+.runtime-pill {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--panel) 94%, transparent);
+  box-shadow: 0 1px 2px rgba(27, 33, 29, 0.04);
+}
+
+.side-panel {
+  min-height: 100%;
+  display: grid;
+  align-content: space-between;
+  gap: 24px;
+  padding: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.side-panel h1,
+.workspace-header h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.08;
+  font-weight: 720;
+}
+
+.side-panel__copy {
+  max-width: 30ch;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.runtime-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.runtime-pill {
+  display: grid;
+  gap: 2px;
+  padding: 9px 10px;
+  background: var(--panel-muted);
+  font-size: 12px;
+}
+
+.runtime-pill span {
+  color: var(--subtle);
+}
+
+.runtime-pill strong {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+
+.runtime-stack form {
+  margin: 0;
+}
+
+.auth-action {
+  display: inline-flex;
+  justify-content: center;
+  min-height: 34px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 9px 11px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 760;
+  cursor: pointer;
+}
+
+.auth-action:hover {
+  background: #244838;
+}
+
+.workspace {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.workspace-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 420px);
+  gap: 14px;
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  padding: 4px 2px 14px;
+}
+
+.workspace-header__status {
+  justify-self: end;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-muted);
+  padding: 8px 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.metric {
+  padding: 12px;
+}
+
+.metric span {
+  display: block;
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.metric small {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.notice {
+  padding: 11px 12px;
+  background: var(--amber-soft);
+  color: var(--amber);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.8fr);
+  gap: 8px;
+}
+
+.surface {
+  min-width: 0;
+  padding: 14px;
+}
+
+.surface--large {
+  min-height: 360px;
+}
+
+.surface__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+
+.surface__header h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.surface__header > span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.account-list,
+.incident-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.account-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 86px 82px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.account-row div {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.account-row strong,
+.incident strong {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+
+.account-row span,
+.incident span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.health {
+  width: fit-content;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 760;
+}
+
+.health--strong {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.health--watch {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.health--risk {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.incident {
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+}
+
+.empty {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  padding: 24px;
+  text-align: center;
+}
+
+.empty strong {
+  display: block;
+  font-size: 15px;
+}
+
+.empty p {
+  max-width: 44ch;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (max-width: 860px) {
+  .app {
+    padding: 10px;
+  }
+
+  .layout,
+  .workspace-header,
+  .summary-grid,
+  .dashboard-grid,
+  .account-row {
+    grid-template-columns: 1fr;
+  }
+
+  .workspace-header__status {
+    justify-self: start;
+  }
+}
