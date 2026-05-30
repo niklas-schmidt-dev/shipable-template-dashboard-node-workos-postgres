@@ -1,0 +1,14 @@
+{
+  "id": "dashboard-node-workos-postgres",
+  "name": "Operations Dashboard",
+  "description": "A full-stack dashboard with React, a Node API, WorkOS AuthKit routes, and a Postgres reporting schema.",
+  "category": "Business",
+  "tags": ["dashboard", "node", "postgres", "workos", "authkit"],
+  "familyId": "dashboard",
+  "variantLabel": "Node + WorkOS + Postgres",
+  "sortOrder": 31,
+  "aliases": ["node-workos-postgres", "workos-postgres-dashboard"],
+  "promptPlaceholder": "A B2B account health dashboard with WorkOS AuthKit, Node routes, Postgres metrics, and incident tracking.",
+  "preview": "",
+  "status": "active"
+}
